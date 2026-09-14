@@ -31,7 +31,7 @@ import { init } from 'goat-counter'
 const goatCounter = init({
   endpoint: 'https://example.goatcounter.com/count',
   params: {
-    path: path => path.replace(/^\/en/, ''),
+    path: (path) => path.replace(/^\/en/, ''),
   },
   filter: ({ params }) => !params.path.startsWith('/admin'),
 })
@@ -51,14 +51,14 @@ running parameter resolvers and filters.
 
 ### Options
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `endpoint` | `string \| URL` | required | Full GoatCounter `/count` endpoint URL. |
-| `enabled` | `boolean` | `true` | Disable every request from this client. |
-| `allowLocal` | `boolean` | `false` | Allow local and private network addresses. |
-| `allowFrame` | `boolean` | `false` | Allow tracking from a frame or iframe. |
-| `params` | `GoatCounterParams` | `{}` | Default request parameter overrides. |
-| `filter` | `(context) => boolean` | — | Return `true` to send the resolved request. |
+| Option       | Type                   | Default  | Description                                 |
+| ------------ | ---------------------- | -------- | ------------------------------------------- |
+| `endpoint`   | `string \| URL`        | required | Full GoatCounter `/count` endpoint URL.     |
+| `enabled`    | `boolean`              | `true`   | Disable every request from this client.     |
+| `allowLocal` | `boolean`              | `false`  | Allow local and private network addresses.  |
+| `allowFrame` | `boolean`              | `false`  | Allow tracking from a frame or iframe.      |
+| `params`     | `GoatCounterParams`    | `{}`     | Default request parameter overrides.        |
+| `filter`     | `(context) => boolean` | —        | Return `true` to send the resolved request. |
 
 Built-in filtering skips prerendered pages, frames unless `allowFrame` is
 enabled, and local or private addresses unless `allowLocal` is enabled. A
@@ -69,16 +69,16 @@ custom `filter` runs afterward with the resolved endpoint and parameters.
 Every supported parameter can be overridden with a value or a synchronous
 resolver:
 
-| SDK field | GoatCounter field | Browser default |
-| --- | --- | --- |
-| `path` | `p` | Same-host canonical path, or `location.pathname + location.search` |
-| `title` | `t` | `document.title` |
-| `referrer` | `r` | `document.referrer` |
-| `event` | `e` | `false` |
-| `noSession` | `ns` | `false` |
-| `screen` | `s` | Screen width |
-| `query` | `q` | `location.search` |
-| `bot` | `b` | `153` for WebDriver, otherwise `0` |
+| SDK field   | GoatCounter field | Browser default                                                    |
+| ----------- | ----------------- | ------------------------------------------------------------------ |
+| `path`      | `p`               | Same-host canonical path, or `location.pathname + location.search` |
+| `title`     | `t`               | `document.title`                                                   |
+| `referrer`  | `r`               | `document.referrer`                                                |
+| `event`     | `e`               | `false`                                                            |
+| `noSession` | `ns`              | `false`                                                            |
+| `screen`    | `s`               | Screen width                                                       |
+| `query`     | `q`               | `location.search`                                                  |
+| `bot`       | `b`               | `153` for WebDriver, otherwise `0`                                 |
 
 Per-call overrides take precedence over `init()` defaults. Resolver functions
 receive the browser-derived default value. Returning `null` from the `path`
@@ -91,7 +91,7 @@ goatCounter.pageview({ referrer: () => 'newsletter' })
 goatCounter.event('download', { noSession: true })
 ```
 
-## Nuxt 4
+## Nuxt
 
 Add the dedicated module export to `nuxt.config.ts`:
 
@@ -143,7 +143,7 @@ functions.
 
 The distributed code targets Baseline Widely Available browsers: Chrome and
 Edge 111+, Firefox 114+, and Safari/iOS 16.4+. The Nuxt integration supports
-Nuxt 4 only.
+Nuxt 4 & 5 only.
 
 This project is an unofficial GoatCounter client. Refer to the
 [GoatCounter JavaScript API](https://www.goatcounter.com/help/js) for the
