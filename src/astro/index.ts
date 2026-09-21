@@ -1,4 +1,4 @@
-import type { ModuleOptions } from './nuxt.ts'
+import type { ModuleOptions } from '../nuxt.ts'
 import type { AstroIntegration } from 'astro'
 
 const defaults = {
@@ -17,18 +17,14 @@ export function goatCounter(userOptions: ModuleOptions = {}): AstroIntegration {
   return {
     name: 'goat-counter',
     hooks: {
-      'astro:config:setup': ({ injectScript, updateConfig }) => {
-        updateConfig({
-          vite: {
-            define: {
-              __GOAT_COUNTER_OPTIONS__: JSON.stringify(options),
-            },
-          },
-        })
-
+      'astro:config:setup': ({ injectScript }) => {
         injectScript(
           'page',
-          `import { initAstroClient } from "goat-counter/runtime/astro-client"; initAstroClient();`,
+          `
+            import { initAstroClient } from 'goat-counter/astro/runtime';
+
+            initAstroClient(${JSON.stringify(options)});
+          `,
         )
       },
     },

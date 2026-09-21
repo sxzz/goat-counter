@@ -24,9 +24,10 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.js",
-    "./astro": "./dist/astro.js",
+    "./astro": "./dist/astro/index.js",
+    "./astro/client": "./dist/astro/client.js",
+    "./astro/runtime": "./dist/astro/runtime.js",
     "./nuxt": "./dist/nuxt.js",
-    "./runtime/astro-client": "./dist/runtime/astro-client.js",
     "./runtime/nuxt-plugin": "./dist/runtime/nuxt-plugin.js",
     "./runtime/use-goat-counter": "./dist/runtime/use-goat-counter.js",
     "./package.json": "./package.json"
