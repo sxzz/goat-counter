@@ -24,7 +24,9 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.js",
+    "./astro": "./dist/astro.js",
     "./nuxt": "./dist/nuxt.js",
+    "./runtime/astro-client": "./dist/runtime/astro-client.js",
     "./runtime/nuxt-plugin": "./dist/runtime/nuxt-plugin.js",
     "./runtime/use-goat-counter": "./dist/runtime/use-goat-counter.js",
     "./package.json": "./package.json"
@@ -36,7 +38,7 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.5.0",
+      "version": "12.5.1",
       "onFail": "download"
     }
   },
@@ -70,8 +72,10 @@
     "@sxzz/prettier-config": "^2.3.2",
     "@types/node": "^26.5.1",
     "@typescript/native-preview": "npm:typescript@~7.0.2",
+    "astro": "^7.3.3",
     "bumpp": "^12.3.0",
     "eslint": "^10.10.0",
+    "eslint-plugin-astro": "^3.2.1",
     "happy-dom": "^20.14.5",
     "nuxt": "^4.5.2",
     "prettier": "^3.9.6",
