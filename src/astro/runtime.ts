@@ -1,5 +1,5 @@
 import { init, type GoatCounterClient } from '../index.ts'
-import type { ResolvedModuleOptions } from '../nuxt.ts'
+import type { ResolvedAstroOptions } from './index.ts'
 
 let goatCounter: GoatCounterClient | undefined
 
@@ -7,7 +7,7 @@ export function getGoatCounter(): GoatCounterClient | undefined {
   return goatCounter
 }
 
-export function initAstroClient(options: ResolvedModuleOptions): void {
+export function initAstroClient(options: ResolvedAstroOptions): void {
   if (goatCounter || typeof document === 'undefined') return
 
   if (!options.enabled) return
