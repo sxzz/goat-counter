@@ -13,6 +13,7 @@ requests directly to GoatCounter's `/count` endpoint and never loads
 - Pageview and event helpers
 - Typed overrides for supported GoatCounter request parameters
 - Optional Nuxt 4 module with automatic pageview tracking
+- Optional Astro integration with automatic pageview tracking
 
 ## Install
 
@@ -138,6 +139,39 @@ goatCounter?.event('signup')
 The composable returns `undefined` during SSR. Nuxt module `params` must be
 serializable static values; per-call parameters can still use resolver
 functions.
+
+## Astro
+
+Add the integration to `astro.config.ts`:
+
+```ts
+import { defineConfig } from 'astro/config'
+import { goatCounter } from 'goat-counter/astro'
+
+export default defineConfig({
+  integrations: [
+    goatCounter({
+      endpoint: 'https://example.goatcounter.com/count',
+    }),
+  ],
+})
+```
+
+The integration tracks the initial page and client-side navigations with
+Astro's `ClientRouter`. It also works without `ClientRouter`.
+
+Use `getGoatCounter()` in browser event handlers for manual tracking:
+
+```ts
+import { getGoatCounter } from 'goat-counter/astro/client'
+
+function onSignup() {
+  getGoatCounter()?.event('signup')
+}
+```
+
+The getter returns `undefined` before initialization or when tracking is disabled,
+and during SSR.
 
 ## Compatibility
 
