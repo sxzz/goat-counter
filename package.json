@@ -16,6 +16,7 @@
   },
   "keywords": [
     "analytics",
+    "astro",
     "browser",
     "goatcounter",
     "nuxt",
@@ -58,9 +59,13 @@
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
+    "astro": "^5.0.0 || ^6.0.0 || ^7.0.0",
     "nuxt": "^4.0.0"
   },
   "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    },
     "nuxt": {
       "optional": true
     }
