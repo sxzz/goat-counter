@@ -20,18 +20,16 @@ export interface AstroOptions {
 
 export type ResolvedAstroOptions = Required<AstroOptions>
 
-const defaults = {
-  endpoint: '',
-  enabled: true,
-  autoPageviews: true,
-  hashMode: false,
-  allowLocal: false,
-  allowFrame: false,
-  params: {},
-} satisfies ResolvedAstroOptions
-
 export function goatCounter(userOptions: AstroOptions = {}): AstroIntegration {
-  const options = { ...defaults, ...userOptions }
+  const options: ResolvedAstroOptions = {
+    endpoint: userOptions.endpoint ?? '',
+    enabled: userOptions.enabled ?? true,
+    autoPageviews: userOptions.autoPageviews ?? true,
+    hashMode: userOptions.hashMode ?? false,
+    allowLocal: userOptions.allowLocal ?? false,
+    allowFrame: userOptions.allowFrame ?? false,
+    params: userOptions.params ?? {},
+  }
 
   return {
     name: 'goat-counter',
