@@ -1,4 +1,4 @@
-import goatCounter from '../../../src/nuxt.ts'
+import goatCounter from '../../../src/nuxt/index.ts'
 import type { NuxtConfig } from 'nuxt/schema'
 
 const config: NuxtConfig = {

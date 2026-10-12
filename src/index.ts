@@ -35,6 +35,27 @@ export interface GoatCounterOptions {
   filter?: (context: GoatCounterFilterContext) => boolean
 }
 
+/** Serializable options shared by the framework integrations. */
+export interface GoatCounterIntegrationOptions {
+  /** Full URL of the GoatCounter `/count` endpoint. */
+  endpoint?: string
+  /** Enable the client integration. @default true */
+  enabled?: boolean
+  /** Track the initial page and completed client navigations. @default true */
+  autoPageviews?: boolean
+  /** Include URL hashes in automatically tracked paths. @default false */
+  hashMode?: boolean
+  /** Allow tracking on local and private addresses. @default false */
+  allowLocal?: boolean
+  /** Allow tracking inside a frame. @default false */
+  allowFrame?: boolean
+  /** Serializable default GoatCounter parameters. */
+  params?: Partial<GoatCounterData>
+}
+
+export type ResolvedGoatCounterIntegrationOptions =
+  Required<GoatCounterIntegrationOptions>
+
 export type GoatCounterPageviewParams = Omit<GoatCounterParams, 'event'>
 export type GoatCounterEventParams = Omit<GoatCounterParams, 'event' | 'path'>
 

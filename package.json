@@ -16,6 +16,7 @@
   },
   "keywords": [
     "analytics",
+    "astro",
     "browser",
     "goatcounter",
     "nuxt",
@@ -24,9 +25,12 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.js",
-    "./nuxt": "./dist/nuxt.js",
-    "./runtime/nuxt-plugin": "./dist/runtime/nuxt-plugin.js",
-    "./runtime/use-goat-counter": "./dist/runtime/use-goat-counter.js",
+    "./astro": "./dist/astro/index.js",
+    "./astro/client": "./dist/astro/client.js",
+    "./astro/runtime": "./dist/astro/runtime.js",
+    "./nuxt": "./dist/nuxt/index.js",
+    "./nuxt/nuxt-plugin": "./dist/nuxt/nuxt-plugin.js",
+    "./nuxt/use-goat-counter": "./dist/nuxt/use-goat-counter.js",
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
@@ -55,9 +59,13 @@
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
+    "astro": "^5.0.0 || ^6.0.0 || ^7.0.0",
     "nuxt": "^4.0.0"
   },
   "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    },
     "nuxt": {
       "optional": true
     }
@@ -70,8 +78,10 @@
     "@sxzz/prettier-config": "^2.3.3",
     "@types/node": "^26.6.5",
     "@typescript/native-preview": "npm:typescript@~7.0.2",
+    "astro": "^7.3.3",
     "bumpp": "^12.3.0",
     "eslint": "^10.12.0",
+    "eslint-plugin-astro": "^3.2.1",
     "happy-dom": "^21.0.1",
     "nuxt": "^4.6.1",
     "prettier": "^3.9.10",

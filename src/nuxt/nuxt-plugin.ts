@@ -9,7 +9,7 @@ import {
   type GoatCounterClient,
   type GoatCounterPageviewParams,
 } from '../index.ts'
-import type { ResolvedModuleOptions } from '../nuxt.ts'
+import type { ResolvedModuleOptions } from './index.ts'
 
 function withoutHash(path: string): string {
   return path.split('#', 1)[0] || '/'
