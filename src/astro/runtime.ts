@@ -65,6 +65,7 @@ export function initAstroClient(options: ResolvedAstroOptions): void {
     onPageLoad()
   }
 
+  // eslint-disable-next-line unicorn/prefer-early-return
   if (options.hashMode) {
     const onHashChange = (): void => {
       const { pathname, search, hash } = location

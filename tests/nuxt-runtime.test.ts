@@ -1,8 +1,8 @@
 // @vitest-environment happy-dom
 
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import goatCounterPlugin from '../src/runtime/nuxt-plugin.ts'
-import type { ResolvedModuleOptions } from '../src/nuxt.ts'
+import goatCounterPlugin from '../src/nuxt/nuxt-plugin.ts'
+import type { ResolvedModuleOptions } from '../src/nuxt/index.ts'
 import type { Window as HappyDOMWindow } from 'happy-dom'
 
 interface Route {

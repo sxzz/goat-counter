@@ -1,5 +1,5 @@
 import { expect, test, vi } from 'vitest'
-import { useGoatCounter } from '../src/runtime/use-goat-counter.ts'
+import { useGoatCounter } from '../src/nuxt/use-goat-counter.ts'
 
 const useNuxtApp = vi.hoisted(() => vi.fn())
 
